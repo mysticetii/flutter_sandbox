@@ -1,8 +1,6 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_sandbox/app_settings.dart';
 import 'package:flutter_sandbox/pageNavigatorCustom.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
@@ -26,13 +24,10 @@ class _FlutterMapPageState extends State<FlutterMapPage> {
 
   @override
   Widget build(BuildContext context) {
-    final AppSettings appSettings = Provider.of<AppSettings>(context);
-    final AppLocalizations localizations = AppLocalizations.of(context);
     final FirebaseAnalytics analytics = Provider.of<FirebaseAnalytics>(context);
     analytics.logEvent(name: 'flutter_map_page');
     final PageNavigatorCustom _pageNavigator =
         Provider.of<PageNavigatorCustom>(context);
-    final PageController _pageController = _pageNavigator.getPageController;
     _pageNavigator.setCurrentPageIndex =
         _pageNavigator.getPageIndex("Flutter Map");
     _pageNavigator.setFromIndex = _pageNavigator.getCurrentPageIndex;
